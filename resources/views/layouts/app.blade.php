@@ -22,7 +22,6 @@
         <div class="container">
             @include('layouts._message')
             @yield('content')
-
         </div>
 
         @include('layouts._footer')
