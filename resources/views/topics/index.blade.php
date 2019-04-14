@@ -1,11 +1,17 @@
 @extends('layouts.app')
 
-@section('title', '话题列表')
+@section('title', isset($category) ? $category->name : '话题列表')
 
 @section('content')
 
     <div class="row">
         <div class="col-lg-9 col-md-9 topic-list">
+
+            @if(isset($category))
+                <div class="alert alert-info" role="alert">
+                    {{ $category->name }} : {{ $category->description }}
+                </div>
+            @endif
             <div class="panel panel-default">
 
                 <div class="panel-heading">
@@ -30,34 +36,3 @@
     </div>
 
 @endsection
-
-/* Topic Index Page */
-.topics-index-page {
-.topic-list {
-.nav > li > a {
-position: relative;
-display: block;
-padding: 5px 14px;
-font-size: 0.9em;
-}
-a {
-color: #444444;
-}
-.meta {
-font-size:0.9em;
-color: #b3b3b3;
-a {
-color: #b3b3b3;
-}
-}
-.badge {
-background-color: #d8d8d8;
-}
-hr {
-margin-top: 12px;
-margin-bottom: 12px;
-border: 0;
-border-top: 1px solid #dcebf5;
-}
-}
-}
