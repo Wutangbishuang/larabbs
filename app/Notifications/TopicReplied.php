@@ -2,17 +2,16 @@
 
 namespace App\Notifications;
 
-use App\Models\Reply;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use App\Models\Reply;
 
 class TopicReplied extends Notification
 {
     use Queueable;
     public $reply;
-
 
     public function __construct(Reply $reply)
     {
@@ -43,4 +42,12 @@ class TopicReplied extends Notification
             'topic_title' => $topic->title,
         ];
     }
+//    public function toMail($notifiable)
+//    {
+//        $url = $this->reply->topic->link(['#reply' . $this->reply->id]);
+//
+//        return (new MailMessage)
+//            ->line('你的话题有新回复!')
+//            ->action('查看回复',$url);
+//    }
 }
